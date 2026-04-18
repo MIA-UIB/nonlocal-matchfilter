@@ -1,0 +1,49 @@
+train:
+  selected:
+    - uibraw
+  uibraw:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticUIBRawSelection
+    _partial_: True
+    root: ${oc.env:RAW_DATASETS_PATH}/UIB_RAW/
+    split: train
+    load_upfront: True
+    synthesis_seed: null
+    synthesis:
+      _target_: nonlocal_matchfilter.data.transforms.SensorNoise
+      _partial_: True
+      concat_std_map: True
+      no_noise: False
+      clip: True
+      p: 1.0
+val:
+  selected:
+    - uibraw
+  uibraw:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticUIBRawSelection
+    _partial_: True
+    root: ${oc.env:RAW_DATASETS_PATH}/UIB_RAW/
+    split: val
+    load_upfront: True
+    synthesis_seed: 7390686
+    synthesis:
+      _target_: nonlocal_matchfilter.data.transforms.SensorNoise
+      _partial_: True
+      concat_std_map: True
+      no_noise: False
+      clip: True
+      p: 1.0
+test:
+  selected:
+    # - dndraw
+    - wildraw
+  dndraw:
+    _target_: nonlocal_matchfilter.data.image_datasets.DNDRaw
+    _partial_: True
+    root: ${oc.env:RAW_DATASETS_PATH}/dnd_2017/
+    crops: True
+    noise_map: True
+  wildraw:
+    _target_: nonlocal_matchfilter.data.image_datasets.WildDualDnRaw
+    _partial_: True
+    root: ${oc.env:RAW_DATASETS_PATH}/WildDualDn/
+    noise_map: True

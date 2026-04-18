@@ -1,0 +1,26 @@
+train:
+  _target_: torch.utils.data.DataLoader
+  _partial_: True
+  batch_size: 4
+  shuffle: True
+  num_workers: 2
+  drop_last: False
+  pin_memory: True
+
+val:
+  _target_: torch.utils.data.DataLoader
+  _partial_: True
+  batch_size: ${..train.batch_size}
+  shuffle: False
+  num_workers: ${..train.num_workers}
+  drop_last: False
+  pin_memory: ${..train.pin_memory}
+
+test:
+  _target_: torch.utils.data.DataLoader
+  _partial_: True
+  batch_size: 1
+  shuffle: False
+  num_workers: ${..train.num_workers}
+  drop_last: False
+  pin_memory: ${..train.pin_memory}

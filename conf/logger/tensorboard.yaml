@@ -1,0 +1,4 @@
+_target_: lightning.pytorch.loggers.TensorBoardLogger
+
+save_dir: ${log_dir}/tensorboard
+name: ${hydra:runtime.choices.experiment}

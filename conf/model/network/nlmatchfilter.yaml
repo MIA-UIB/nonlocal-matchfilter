@@ -1,0 +1,6 @@
+_target_: nonlocal_matchfilter.networks.SimpleBlockMatchingNet
+input_channels: 4
+output_channels: 3
+n_features: 32
+neighbours: [3, 5]
+max_search_dist: 9.0

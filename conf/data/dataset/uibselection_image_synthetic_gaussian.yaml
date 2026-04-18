@@ -1,0 +1,102 @@
+train:
+  selected:
+    - uibselection
+  uibselection:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticUIBSelection
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/
+    split: train
+    synthesis_seed: null
+    synthesis:
+      _target_: nonlocal_matchfilter.data.transforms.GaussNoise
+      _partial_: True
+      mean_range: [0.0, 0.0]
+      std_range: [0.0, 0.196078431373]
+      per_channel: True
+      noise_scale_factor: 1.0
+      concat_std_map: True
+      no_noise: False
+      clip: False
+      p: 1.0
+val:
+  selected:
+    - uibselection
+  uibselection:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticUIBSelection
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/
+    split: val
+    synthesis_seed: 3709668
+    synthesis:
+      _target_: nonlocal_matchfilter.data.transforms.GaussNoise
+      _partial_: True
+      mean_range: [0.0, 0.0]
+      std_range: [0.0, 0.196078431373]
+      per_channel: True
+      noise_scale_factor: 1.0
+      concat_std_map: False
+      no_noise: False
+      clip: False
+      p: 1.0
+test:
+  selected:
+    # - bsd100
+    - cbsd68
+    # - kodak24
+    # - mcmaster
+    # - urban100
+    # - set14
+    # - lsdir
+  bsd100:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticBSD100
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/test/BSD100/test/
+    synthesis_seed: 9073668
+    synthesis:
+      _target_: nonlocal_matchfilter.data.transforms.GaussNoise
+      _partial_: True
+      mean_range: [0.0, 0.0]
+      std_range: [0.0, 0.196078431373]
+      per_channel: True
+      noise_scale_factor: 1.0
+      concat_std_map: False
+      no_noise: False
+      clip: False
+      p: 1.0
+  cbsd68:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticCBSD68
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/test/CBSD68/test/
+    synthesis_seed: 9073669
+    synthesis: ${..bsd100.synthesis}
+  kodak24:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticKodak24
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/test/Kodak/test/
+    synthesis_seed: 9074670
+    synthesis: ${..bsd100.synthesis}
+  mcmaster:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticMcMaster
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/test/McM/test/
+    synthesis_seed: 9075671
+    synthesis: ${..bsd100.synthesis}
+  urban100:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticUrban100
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/test/Urban100/test/
+    synthesis_seed: 9075672
+    synthesis: ${..bsd100.synthesis}
+  set14:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticSet14
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/UIB_SINGLE_IMAGE/test/Set14/test/
+    synthesis_seed: 9076673
+    synthesis: ${..bsd100.synthesis}
+  lsdir:
+    _target_: nonlocal_matchfilter.data.image_datasets.SyntheticLSDIR
+    _partial_: True
+    root: ${oc.env:PNG_DATASETS_PATH}/LSDIR/
+    split: val
+    synthesis_seed: 9076674
+    synthesis: ${..bsd100.synthesis}

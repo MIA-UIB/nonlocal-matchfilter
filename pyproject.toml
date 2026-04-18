@@ -1,0 +1,59 @@
+[project]
+name = "nonlocal-matchfilter"
+version = "0.1.0"
+description = ""
+authors = [
+  { name = "Marco Sánchez Beeckman <marco.sanchez@uib.es>", email = "marco.sanchez@uib.es" }
+]
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "aim>=3.27.0",
+    "albumentations>=2.0.8",
+    "deform-neighbourhood-sampling>=0.1.1",
+    "einops>=0.8.0",
+    "hydra-colorlog>=1.2.0",
+    "hydra-core>=1.3.2",
+    "imagecodecs>=2024.9.22",
+    "lightning>=2.6.0.dev20250720",
+    "numpy>=2.2.0",
+    "patchmatch>=0.1.0",
+    "pyrootutils>=1.0.4",
+    "python-dotenv>=1.0.1",
+    "rich>=13.9.4",
+    "tifffile>=2024.9.20",
+    "torch>=2.6.0,<2.7.0",
+    "torchmetrics>=1.7.0",
+    "torchvision>=0.21.0",
+]
+
+[project.scripts]
+train = "nonlocal_matchfilter.train:main"
+test = "nonlocal_matchfilter.test:main"
+
+[dependency-groups]
+dev = [
+    "ipython>=8.30.0",
+]
+
+[tool.uv]
+package = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu124", marker = "platform_system == 'Linux'" },
+]
+torchvision = [
+  { index = "pytorch-cu124", marker = "platform_system == 'Linux'" },
+]
+deform-neighbourhood-sampling = { git = "https://github.com/MIA-UIB/deform-neighbourhood-sampling", tag = "v0.1.1" }
+patchmatch = { git = "https://github.com/MIA-UIB/patchmatch", tag = "v0.1.0" }
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+
+[tool.basedpyright]
+typeCheckingMode = "off"

@@ -1,0 +1,5 @@
+learning_rate_monitor:
+  _target_: lightning.pytorch.callbacks.LearningRateMonitor
+
+  log_momentum: True
+  log_weight_decay: True

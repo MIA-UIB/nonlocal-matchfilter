@@ -1,0 +1,11 @@
+_target_: aim.pytorch_lightning.AimLogger
+repo: ${oc.env:AIM_REPO_PATH}
+experiment: ${hydra:runtime.choices.experiment}
+log_system_params: True
+system_tracking_interval: 10
+capture_terminal_logs: True
+train_metric_prefix: train_
+val_metric_prefix: val_
+test_metric_prefix: test_
+run_name: null
+run_hash: null

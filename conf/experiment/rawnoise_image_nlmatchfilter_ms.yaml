@@ -1,0 +1,48 @@
+# @package _global_
+defaults:
+  - override /model: image
+  - override /model/network: nlmatchfilter_ms
+  - override /model/loss: l1
+  - override /model/optimizer: adam
+  - override /data/dataset: uibraw_image_synthetic_sensor
+  - override /data/loader: default
+  - override /data/transforms: default
+  - override /trainer: gpu
+data:
+  dataset:
+    train:
+      selected:
+        - uibraw
+      uibraw:
+        synthesis:
+          concat_std_map: True
+          clip: True
+    val:
+      uibraw:
+        synthesis:
+          concat_std_map: True
+          clip: True
+    test:
+      selected:
+        # - dndraw
+        - wildraw
+      dndraw:
+        crops: True
+  loader:
+    train:
+      num_workers: 16
+      batch_size: 4
+  transforms:
+    train:
+      random_crop:
+        height: 128
+        width: 128
+    val:
+      center_crop:
+        height: 256
+        width: 256
+    test:
+      center_crop:
+        p: 0.0
+trainer:
+  max_epochs: 10000

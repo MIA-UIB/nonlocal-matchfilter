@@ -1,0 +1,6 @@
+defaults:
+  - model_checkpoint
+  - rich_model_summary
+  - rich_progress_bar
+  - learning_rate_monitor
+  # - device_stats_monitor

@@ -1,0 +1,62 @@
+# @package _global_
+defaults:
+  - override /model: image
+  - override /model/network: nlmatchfilter_ms
+  - override /model/loss: l1
+  - override /model/optimizer: adam
+  - override /data/dataset: uibselection_image_synthetic_gaussian
+  - override /data/loader: default
+  - override /data/transforms: default
+  - override /trainer: gpu
+data:
+  dataset:
+    train:
+      uibselection:
+        synthesis:
+          std_range: [0.0196078431373, 0.196078431373]
+          concat_std_map: True
+          clip: False
+    val:
+      uibselection:
+        synthesis:
+          std_range: [0.0196078431373, 0.196078431373]
+          concat_std_map: True
+          clip: False
+    test:
+      selected:
+        - cbsd68-test
+      cbsd68-test:
+        _target_: nonlocal_matchfilter.data.image_datasets.GenericTiffTestSet
+        _partial_: True
+        root: ${oc.env:PNG_DATASETS_PATH}/denoising_test/CBSD68-sigma15/
+  loader:
+    train:
+      num_workers: 16
+      batch_size: 16
+  transforms:
+    train:
+      random_crop:
+        height: 128
+        width: 128
+    val:
+      center_crop:
+        height: 256
+        width: 256
+    test:
+      order:
+        - center_crop
+        - concat_std_map
+      center_crop:
+        height: 480
+        width: 848
+        p: 0.0
+      concat_std_map:
+        _target_: nonlocal_matchfilter.data.transforms.GaussNoise
+        mean_range: [0.0, 0.0]
+        std_range: [0.0588235294118, 0.0588235294118]
+        concat_std_map: True
+        no_noise: True
+        seed: null
+        p: 1.0
+trainer:
+  max_epochs: 2000

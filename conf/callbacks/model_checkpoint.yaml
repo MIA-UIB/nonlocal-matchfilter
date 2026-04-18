@@ -1,0 +1,9 @@
+model_checkpoint:
+  _target_: lightning.pytorch.callbacks.ModelCheckpoint
+  dirpath: ${log_dir}/checkpoints
+  filename: "${hydra:runtime.choices.model}-${hydra:runtime.choices.model/network}-${hydra:runtime.choices.experiment}-{epoch}-{val_psnr:.2f}"
+  verbose: True
+  every_n_epochs: 1
+  save_last: True
+  monitor: val_psnr
+  mode: max

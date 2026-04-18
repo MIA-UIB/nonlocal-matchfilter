@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - model: image
+  - model/network: nlmatchfilter_ms
+  - model/loss: l1
+  - model/optimizer: adam
+  - model/scheduler: cosine_annealing_warm_restart
+  - data: default
+  - data/dataset: uibraw_image_synthetic_sensor
+  - data/loader: default
+  - data/transforms: default
+  - callbacks: default
+  - logger: aim
+  - hydra: default
+    # - experiment: null
+  - trainer: gpu
+
+task_name: "train"
+log_dir: ${oc.env:PROJECT_ROOT}/logs/
+
+ckpt_path: null
+resume_training: False

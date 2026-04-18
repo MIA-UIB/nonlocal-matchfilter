@@ -1,0 +1,4 @@
+_target_: nonlocal_matchfilter.networks.CherelBlockMatchingUNet
+input_channels: 4
+output_channels: 3
+n_features: 32
