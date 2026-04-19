@@ -31,6 +31,10 @@ class LitImageDenoisingModule(L.LightningModule):
         self.psnr = PeakSignalNoiseRatio(data_range=(0.0, 1.0))
         self.ssim = StructuralSimilarityIndexMeasure(data_range=(0.0, 1.0))
 
+        self.example_input_array = torch.empty(
+            1, self.model.in_channels, 128, 128, device=self.device
+        )
+
     def forward(self, image, **kwargs):
         return self.model(image, **kwargs)
 
