@@ -8,6 +8,10 @@ defaults:
   - override /data/loader: default
   - override /data/transforms: default
   - override /trainer: gpu
+model:
+  network:
+    input_channels: 8
+    output_channels: 4
 data:
   dataset:
     train:
