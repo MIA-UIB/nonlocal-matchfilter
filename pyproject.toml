@@ -1,6 +1,6 @@
 [project]
 name = "nonlocal-matchfilter"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
 authors = [
   { name = "Marco Sánchez Beeckman <marco.sanchez@uib.es>", email = "marco.sanchez@uib.es" }
@@ -54,6 +54,9 @@ name = "pytorch-cu124"
 url = "https://download.pytorch.org/whl/cu124"
 explicit = true
 
-
 [tool.basedpyright]
 typeCheckingMode = "off"
+
+[build-system]
+requires = ["uv_build >= 0.9.0"]
+build-backend = "uv_build"
