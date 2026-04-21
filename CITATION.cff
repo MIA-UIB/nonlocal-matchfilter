@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If this paper is relevant to your work, please cite it as follows."
+authors:
+  - family-names: "Sánchez-Beeckman"
+    given-names: "Marco"
+    orcid: "https://orcid.org/0000-0002-5949-0775"
+  - family-names: "Buades"
+    given-names: "Antoni"
+    orcid: "https://orcid.org/0000-0001-9832-3358"
+title: "Learned Nonlocal Feature Matching and Filtering for RAW Image Denoising"
+doi: 10.48550/arXiv.2604.17453
+date-released: "2026-04-19"
+url: "https://github.com/MIA-UIB/nonlocal-matchfilter"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Sánchez-Beeckman"
+      given-names: "Marco"
+      orcid: "https://orcid.org/0000-0002-5949-0775"
+    - family-names: "Buades"
+      given-names: "Antoni"
+      orcid: "https://orcid.org/0000-0001-9832-3358"
+  title: "Learned Nonlocal Feature Matching and Filtering for RAW Image Denoising"
+  journal: "arXiv preprint arXiv:2604.17453"
+  year: 2026
+  url: "https://arxiv.org/abs/2604.17453"

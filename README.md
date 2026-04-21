@@ -2,6 +2,8 @@
 
 [Marco Sánchez Beeckman](https://orcid.org/0000-0002-5949-0775) and [Antoni Buades](https://orcid.org/0000-0001-9832-3358)
 
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2604.17453)
+
 ## Abstract
 
 > Being one of the oldest and most basic problems in image processing, image denoising has seen a resurgence spurred by rapid advances in deep learning.
@@ -13,9 +15,9 @@ This built-in nonlocality efficiently expands the receptive field, sufficing a s
 Training the network on a curated dataset with clean real RAW data and modeled synthetic noise while conditioning it on a noise level map yields a sensor-agnostic denoiser that generalizes effectively to unseen devices.
 Both quantitative and visual results on benchmarks and in-the-wild photographs position our method as a practical and interpretable solution for real-world RAW denoising, achieving results competitive with state-of-the-art convolutional and transformer-based denoisers while using significantly fewer parameters.
 
-## Citation
+## Network architecture
 
-TODO
+![Network architecture](https://arxiv.org/html/2604.17453v1/x1.png)
 
 ## Environment and dependencies
 
@@ -101,4 +103,18 @@ We do not redistribute them; please, download them from their original sources a
 
 All the images in the RAW datasets are expected to be `tiff` files, packed into 4 channels in RGBG format.
 They also need metadata `npy` files containing their noise profiles and ISP information to process them for visualization.
-We provide such files in the repository's Releases, alongisde some pretrained network weights.
+We provide such files in the repository's Releases, alongside some pretrained network weights.
+
+## Citation
+
+```
+@misc{Sanchezbeeckman2026NonlocalMatchFilter,
+    title={Learned Nonlocal Feature Matching and Filtering for RAW Image Denoising}, 
+    author={Marco Sánchez-Beeckman and Antoni Buades},
+    year={2026},
+    eprint={2604.17453},
+    archivePrefix={arXiv},
+    primaryClass={eess.IV},
+    url={https://arxiv.org/abs/2604.17453}, 
+}
+```
